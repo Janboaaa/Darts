@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="25.0.1">
+  <diagram name="Darts Game" id="0">
+    <mxGraphModel dx="1434" dy="818" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Frontend" style="swimlane;startSize=20;horizontal=1;" parent="1" vertex="1">
+          <mxGeometry width="400" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=green;" parent="2" vertex="1">
+          <mxGeometry x="180" y="40" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Modus auswählen (Bot/Spieler)" style="rounded=1;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+          <mxGeometry x="100" y="120" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Regeln festlegen\n(Double/Triple Out, Startpunktzahl)" style="rounded=1;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+          <mxGeometry x="100" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Spiel starten" style="rounded=1;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+          <mxGeometry x="100" y="300" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="Spieler wirft 3 Darts\nErgebnis eingeben" style="rounded=1;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+          <mxGeometry x="100" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="Spiel abbrechen?" style="rhombus;whiteSpace=wrap;html=1;" parent="2" vertex="1">
+          <mxGeometry x="160" y="600" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Backend" style="swimlane;startSize=20;horizontal=1;" parent="1" vertex="1">
+          <mxGeometry x="400" width="400" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="Regeln prüfen\n(z.B. Überwerfen)" style="rounded=1;whiteSpace=wrap;html=1;" parent="3" vertex="1">
+          <mxGeometry x="100" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="Bot simuliert Wurf\nund gibt Ergebnis zurück" style="rounded=1;whiteSpace=wrap;html=1;" parent="3" vertex="1">
+          <mxGeometry x="100" y="500" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="Gewinner ermittelt?" style="rhombus;whiteSpace=wrap;html=1;" parent="3" vertex="1">
+          <mxGeometry x="160" y="600" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" parent="3" source="9" target="10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" parent="3" source="10" target="12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=red;" parent="3" vertex="1">
+          <mxGeometry x="30" y="720" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" parent="3" source="12" target="13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" parent="1" source="4" target="5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" parent="1" source="5" target="6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" parent="1" source="6" target="7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" parent="1" source="7" target="8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" parent="1" source="8" target="9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" parent="1" source="11" target="13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
