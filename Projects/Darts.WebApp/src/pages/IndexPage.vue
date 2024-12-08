@@ -1,11 +1,11 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <example-component />
+    <numbers-component />
   </q-page>
 </template>
 
 <script setup lang="ts">
-import ExampleComponent from 'components/ExampleComponent.vue';
+import NumbersComponent from 'components/NumbersComponent.vue';
 
 defineOptions({
   name: 'IndexPage',
