@@ -1,10 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-toolbar-title>Darts App</q-toolbar-title>
-      </q-toolbar>
-    </q-header>
+    <app-bar-component />
 
     <q-page-container>
       <router-view />
@@ -13,6 +9,8 @@
 </template>
 
 <script setup lang="ts">
+import AppBarComponent from 'components/AppBarComponent.vue';
+
 defineOptions({
   name: 'MainLayout',
 });
