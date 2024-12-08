@@ -2,7 +2,6 @@
   <div
     class="q-pa-md flex flex-col items-center grid grid-rows-[auto,auto] gap-1"
   >
-    <!-- Zahlen-Buttons -->
     <div class="grid grid-cols-7 gap-1">
       <q-btn
         v-for="num in numbers"
@@ -15,7 +14,6 @@
       />
     </div>
 
-    <!-- Spezialbuttons (0, Double, Triple, Delete) -->
     <div class="grid grid-cols-7 gap-1 place-content-start">
       <q-btn
         label="0"
@@ -47,49 +45,95 @@
         label="Accept"
         color="positive"
         class="col-span-1 flex items-center justify-center"
-        @click="deleteLast"
+        @click="acceptSelection"
       />
     </div>
+    <!-- <div class="mt-4">
+      <input
+        v-model="state.selectedNumber"
+        type="text"
+        class="border p-2 rounded"
+        readonly
+      />
+    </div> -->
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed } from 'vue';
+import { defineComponent, reactive, computed, ComputedRef } from 'vue';
+
+interface State {
+  selectedNumber: number | null;
+  numbers: number[];
+  modifiersDisabled: boolean;
+  modifierApplied: string;
+}
+
+interface SelectionResult {
+  number: number;
+  modifier: string;
+  selectedNumber: number;
+}
 
 export default defineComponent({
   name: 'NumberGrid',
   setup() {
-    const state = reactive({
-      selectedNumber: null as number | null,
+    const state: State = reactive({
+      selectedNumber: null,
       numbers: [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
         25,
       ],
+      modifiersDisabled: false,
+      modifierApplied: '',
     });
 
-    const canDouble = computed(
-      () => state.selectedNumber !== null && state.selectedNumber !== 0,
-    );
-
-    const canTriple = computed(
+    const canDouble: ComputedRef<boolean> = computed(
       () =>
         state.selectedNumber !== null &&
         state.selectedNumber !== 0 &&
-        state.selectedNumber !== 25,
+        !state.modifiersDisabled,
+    );
+    const canTriple: ComputedRef<boolean> = computed(
+      () =>
+        state.selectedNumber !== null &&
+        state.selectedNumber !== 0 &&
+        state.selectedNumber !== 25 &&
+        !state.modifiersDisabled,
     );
 
     const selectNumber = (num: number): void => {
       state.selectedNumber = num;
-      console.log(`Selected number: ${num}`);
     };
 
     const applyModifier = (modifier: string): void => {
-      console.log(`Applied modifier: ${modifier} to ${state.selectedNumber}`);
+      if (state.selectedNumber !== null) {
+        if (modifier === 'Double') {
+          state.selectedNumber *= 2;
+          state.modifierApplied = 'Double';
+        } else if (modifier === 'Triple') {
+          state.selectedNumber *= 3;
+          state.modifierApplied = 'Triple';
+        }
+        state.modifiersDisabled = true;
+      }
     };
 
     const deleteLast = (): void => {
       state.selectedNumber = null;
-      console.log('Last selection deleted');
+      state.modifiersDisabled = false;
+    };
+
+    const acceptSelection = (): SelectionResult => {
+      if (state.selectedNumber === null) {
+        return { number: 0, modifier: '', selectedNumber: 0 };
+      }
+
+      return {
+        number: state.selectedNumber,
+        modifier: state.modifierApplied,
+        selectedNumber: state.selectedNumber,
+      };
     };
 
     const isDisabled = (num: number): boolean => {
@@ -100,6 +144,7 @@ export default defineComponent({
     };
 
     return {
+      state,
       numbers: state.numbers,
       canDouble,
       canTriple,
@@ -107,6 +152,7 @@ export default defineComponent({
       applyModifier,
       deleteLast,
       isDisabled,
+      acceptSelection,
     };
   },
 });
